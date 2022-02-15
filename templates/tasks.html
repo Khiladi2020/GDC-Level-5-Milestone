@@ -1,0 +1,19 @@
+<h1>Tasks Management System</h1>
+
+<form action="/add-task" method="get">
+    <input type="text" name="task" />
+    <button type="submit">Add Task</button>
+</form>
+
+<h2>Tasks</h2>
+<ul style="list-style: none">
+    {% for task in tasks%}
+    <li>
+        <b>{{forloop.counter}}.</b> {{task.title}} | 
+        <a href="/delete-task/{{task.id}}">delete</a>
+        <a href="/complete_task/{{task.id}}">mark complete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+Server Start Time: {% firstof time "Unknown" %}
